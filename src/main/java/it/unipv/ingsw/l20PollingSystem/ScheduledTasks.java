@@ -31,7 +31,7 @@ public class ScheduledTasks {
         ArrayList<Poll> polls = pollRepo.findAllByIsOpen(true);
         for(Poll poll : polls) {
             pollCreationService.closeExpiredPoll(poll);
-            if(poll.isDoubleRound()) {
+            if(poll.isDoubleRound() & poll.isOpen()) {
                 Question firstRoundQuestion = questionRepo.findByPollIdAndIsOpen(poll.getPollId(), true);
                 if(pollCreationService.checkExpiration(firstRoundQuestion)) {
                     PollCreationForm form = pollCreationService.setUpSecondRound(poll, firstRoundQuestion);
