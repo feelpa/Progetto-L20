@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/../CSS/bootstrap/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/../CSS/bootstrap/navbar.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/../CSS/bootstrap/common.css}">
+
+    <title>Operation failed</title>
+
+    <style>
+        body{
+            background: #292B2C;
+        }
+        .failure-message {
+            margin: 0.5rem;
+            font-size: 30px;
+        }
+    </style>
+
+</head>
+<body>
+<!--NAV-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div>
+            <img id="logoProfile" src="/../img/question-diamond.svg"/>
+            <a id="btnProfileHome" role="button" class="btn btn-dark" th:href="@{/}">
+                L20
+            </a>
+            <a class="btn btn-dark" th:href="@{/about}" role="button">About</a>
+        </div>
+        <div sec:authorize="isAuthenticated()">
+            <a id="btnProfileUser" role="button" class="btn btn-dark" th:href="@{/user/{username}(username = ${#authentication.getPrincipal().getUsername()})}">
+                <span id="userNameProfile" th:text="${#authentication.getPrincipal().getUsername()}">PLACEHOLDER</span>
+                <img src="/../img/person-circle.svg"/>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="card text-white bg-danger border-light">
+    <div class="card-body">
+        <div class="container">
+            <div class="row">
+                <center>
+                    <img src="/../img/close-circle.svg" width="250" height="250" />
+                </center>
+            </div>
+            <!-- <hr class="bg-success"> -->
+            <div class="container">
+                <div class="row">
+                    <center>
+                        <span class="failure-message" th:text="${message}"></span>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/../JS/popper.min.js"></script>
+<script src="/../JS/bootstrap.js"></script>
+<script src="/../JS/jquery.js"></script>
+</body>
+</html>

@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7efdd1c7-36a1-4104-b1ba-24cd2dbad8b0" name="Default Changelist" comment="update dei metodi che inviano una mail correggendo il link in modo che punti alla live demo.&#10;inserita la dicitura [second round] nella creazione della domanda per il ballottaggio in PollCreationService.generateQuestionForSecondRound&#10;update README.md">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipv/ingsw/l20PollingSystem/security/controller/PasswordOperationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipv/ingsw/l20PollingSystem/security/controller/PasswordOperationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipv/ingsw/l20PollingSystem/security/controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipv/ingsw/l20PollingSystem/security/controller/RegistrationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipv/ingsw/l20PollingSystem/service/PollCreationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipv/ingsw/l20PollingSystem/service/PollCreationService.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="HTML File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="main" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="safe-dev" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1n3VlodwzBUwlugtoOoeKiX06Zy" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Download\UNI\04_swIng\PROGETTO\l20PollingSystem\src\main\resources\img" />
+      <recent name="E:\Download\UNI\04_swIng\PROGETTO\l20PollingSystem\src\main\resources\template" />
+      <recent name="E:\Download\UNI\04_swIng\PROGETTO\l20PollingSystem" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="it.unipv.ingsw.l20PollingSystem.security.service" />
+      <recent name="it.unipv.ingsw.l20PollingSystem.model" />
+      <recent name="it.unipv.ingsw.l20PollingSystem.security.controller" />
+      <recent name="it.unipv.ingsw.l20PollingSystem.service" />
+      <recent name="it.unipv.ingsw.l20PollingSystem" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.L20PollingSystemApplication">
+    <configuration name="L20PollingSystemApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="it.unipv.ingsw.l20PollingSystem.L20PollingSystemApplication" />
+      <module name="l20PollingSystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipv.ingsw.l20PollingSystem.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="mvnw" type="ShConfigurationType" temporary="true">
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/mvnw" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.L20PollingSystemApplication" />
+        <item itemvalue="Shell Script.mvnw" />
+        <item itemvalue="Application.L20PollingSystemApplication" />
+        <item itemvalue="Application.L20PollingSystemApplication" />
+        <item itemvalue="Application.L20PollingSystemApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7efdd1c7-36a1-4104-b1ba-24cd2dbad8b0" name="Default Changelist" comment="" />
+      <created>1610618915627</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1610618915627</updated>
+    </task>
+    <task id="LOCAL-00032" summary="proposta per la visualizzazione delle stats">
+      <created>1611479131016</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1611479131016</updated>
+    </task>
+    <task id="LOCAL-00033" summary="modifica reindirizzamento metodo per salvataggio risposte">
+      <created>1611479768821</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1611479768822</updated>
+    </task>
+    <task id="LOCAL-00034" summary="refactor SecurityConfig e correzione query per stats">
+      <created>1611496997102</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1611496997102</updated>
+    </task>
+    <task id="LOCAL-00035" summary="correzione PollViewer.getPublicPolls">
+      <created>1611498037230</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1611498037230</updated>
+    </task>
+    <task id="LOCAL-00036" summary="validazione input registrazione">
+      <created>1611523851465</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1611523851465</updated>
+    </task>
+    <task id="LOCAL-00037" summary="display error message on failed login&#10;correzione SecurityConfig">
+      <created>1611526313756</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1611526313756</updated>
+    </task>
+    <task id="LOCAL-00038" summary="update SecurityConfig">
+      <created>1611526429662</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1611526429662</updated>
+    </task>
+    <task id="LOCAL-00039" summary="validazione form creazione questionario">
+      <created>1611596155314</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1611596155314</updated>
+    </task>
+    <task id="LOCAL-00040" summary="finita validazione creazione form:&#10; - controllo duplicati tra opzioni e email&#10; - modifica pollcreation.js per limitare l'impostazione delle date di scadenza, aggiungere o rimuovere specifici campi tra opzioni e email, evitare che i campi mostrati in seguito alla spunta delle relative checkbox venissero nuovamente nascosti al refresh della pagina&#10;refactor PollCreationForm e PollCreationService">
+      <created>1611674482717</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1611674482717</updated>
+    </task>
+    <task id="LOCAL-00041" summary="correzione chek duplicati. esclusione caso submit di un form vuoto">
+      <created>1611676884624</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1611676884624</updated>
+    </task>
+    <task id="LOCAL-00042" summary="renaming metodo per il salvataggio del form nel db">
+      <created>1611676957888</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1611676957888</updated>
+    </task>
+    <task id="LOCAL-00043" summary="validazione risposta">
+      <created>1611685551899</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1611685551899</updated>
+    </task>
+    <task id="LOCAL-00044" summary="minor changes to profile and result view">
+      <created>1611692487584</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1611692487584</updated>
+    </task>
+    <task id="LOCAL-00045" summary="fix query sbagliata">
+      <created>1611695510165</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1611695510165</updated>
+    </task>
+    <task id="LOCAL-00046" summary="added email verification on registration">
+      <created>1611739548303</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1611739548303</updated>
+    </task>
+    <task id="LOCAL-00047" summary="added email verification on registration">
+      <created>1611739556685</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1611739556685</updated>
+    </task>
+    <task id="LOCAL-00048" summary="refactor RegistrationController. added ConfirmationTokenService">
+      <created>1611745438982</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1611745438982</updated>
+    </task>
+    <task id="LOCAL-00049" summary="recupero password. email di alert quando un questionario viene condiviso con un utente">
+      <created>1611760736876</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1611760736876</updated>
+    </task>
+    <task id="LOCAL-00050" summary="redirect login to previous requested url">
+      <created>1611764909080</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1611764909080</updated>
+    </task>
+    <task id="LOCAL-00051" summary="fix bugs">
+      <created>1611768423317</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1611768423317</updated>
+    </task>
+    <task id="LOCAL-00052" summary="aggiunto il background job per creare in automatico le nuove domande per il secondo turno dei questionari double round&#10;refactor codice: Expirable e ExpirationControl&#10;fix pollcreation.js per avere la scadenza a step di 5 minuti">
+      <created>1611845147989</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1611845147991</updated>
+    </task>
+    <task id="LOCAL-00053" summary="fixato lo script per inserire gli attributi min e max dei datepicker in pollcreation.js">
+      <created>1611864996255</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1611864996255</updated>
+    </task>
+    <task id="LOCAL-00054" summary="ViewPollController.viewResolver indirizza alla pagina dei risultati anche chi non ha votato nel caso in cui il poll sia scaduto.">
+      <created>1611866406132</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1611866406132</updated>
+    </task>
+    <task id="LOCAL-00055" summary="fix script creazione db">
+      <created>1611867558431</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1611867558431</updated>
+    </task>
+    <task id="LOCAL-00056" summary="aggiunta la parte di editing del poll">
+      <created>1611876084217</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1611876084217</updated>
+    </task>
+    <task id="LOCAL-00057" summary="accesso all'editing del poll solo per il creator.&#10;vietata la modifica di un poll chiuso o per cui sia già stata registrata una risposta.">
+      <created>1611877116738</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1611877116738</updated>
+    </task>
+    <task id="LOCAL-00058" summary="passaggio manuale al ballottagio">
+      <created>1611879080653</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1611879080653</updated>
+    </task>
+    <task id="LOCAL-00059" summary="aggiunta delete e stop the count">
+      <created>1611879366529</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1611879366529</updated>
+    </task>
+    <task id="LOCAL-00060" summary="fixed PollCreationService.deletePoll">
+      <created>1611881393052</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1611881393052</updated>
+    </task>
+    <task id="LOCAL-00061" summary="fixed card. linked options. alert on irreversible actions">
+      <created>1611918514371</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1611918514372</updated>
+    </task>
+    <task id="LOCAL-00062" summary="fixed viewport">
+      <created>1611920466385</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1611920466385</updated>
+    </task>
+    <task id="LOCAL-00063" summary="template fixes">
+      <created>1611927012240</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1611927012240</updated>
+    </task>
+    <task id="LOCAL-00064" summary="fixed navbar">
+      <created>1611934364488</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1611934364488</updated>
+    </task>
+    <task id="LOCAL-00065" summary="fixed pollview.html e resultview.html">
+      <created>1611938951755</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1611938951755</updated>
+    </task>
+    <task id="LOCAL-00066" summary="fixed forgot-password.html e reset-password.html">
+      <created>1611941853535</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1611941853535</updated>
+    </task>
+    <task id="LOCAL-00067" summary="fixed success.html.html e failure.html.html">
+      <created>1611943428911</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1611943428911</updated>
+    </task>
+    <task id="LOCAL-00068" summary="deletion confirmation token after usage">
+      <created>1611943669201</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1611943669201</updated>
+    </task>
+    <task id="LOCAL-00069" summary="correction ForgotPasswordController.validateResetToken to evaluate separately if null and if expired">
+      <created>1611944003639</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1611944003639</updated>
+    </task>
+    <task id="LOCAL-00070" summary="corretto colore di sfondo">
+      <created>1611944196742</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1611944196758</updated>
+    </task>
+    <task id="LOCAL-00071" summary="modificato RegistrationController.confirmUserAccount in modo da cancellare il token dopo l'utilizzo">
+      <created>1611944476876</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1611944476889</updated>
+    </task>
+    <task id="LOCAL-00072" summary="edit homepage.&#10;aggiunto easter egg">
+      <created>1612004486512</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1612004486512</updated>
+    </task>
+    <task id="LOCAL-00073" summary="edit homepage.">
+      <created>1612009191412</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1612009191412</updated>
+    </task>
+    <task id="LOCAL-00074" summary="edit profile.html.&#10;aggiunti controlli di sicurezza a EditingPollController.stopTheCount e EditingPollController.deletePoll">
+      <created>1612015769355</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1612015769355</updated>
+    </task>
+    <task id="LOCAL-00075" summary="added about.html">
+      <created>1612017903473</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1612017903473</updated>
+    </task>
+    <task id="LOCAL-00076" summary="added update-password.html&#10;added password constraints and validation">
+      <created>1612025225742</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1612025225742</updated>
+    </task>
+    <task id="LOCAL-00077" summary="update profile.html">
+      <created>1612026776147</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1612026776147</updated>
+    </task>
+    <task id="LOCAL-00078" summary="added password-strenght-meter">
+      <created>1612027964102</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1612027964102</updated>
+    </task>
+    <task id="LOCAL-00079" summary="update success.html">
+      <created>1612029081825</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1612029081825</updated>
+    </task>
+    <task id="LOCAL-00080" summary="update dei metodi che inviano una mail correggendo il link in modo che punti alla live demo.&#10;inserita la dicitura [second round] nella creazione della domanda per il ballottaggio in PollCreationService.generateQuestionForSecondRound&#10;update README.md">
+      <created>1612168958824</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1612168958825</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="validation" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="aggiunta la parte di editing del poll" />
+    <MESSAGE value="accesso all'editing del poll solo per il creator.&#10;vietata la modifica di un poll chiuso o per cui sia già stata registrata una risposta." />
+    <MESSAGE value="passaggio manuale al ballottagio" />
+    <MESSAGE value="aggiunta delete e stop the count" />
+    <MESSAGE value="fixed PollCreationService.deletePoll" />
+    <MESSAGE value="fixed card. linked options. alert on irreversible actions" />
+    <MESSAGE value="fixed viewport" />
+    <MESSAGE value="template fixes" />
+    <MESSAGE value="fixed navbar" />
+    <MESSAGE value="fixed pollview.html e resultview.html" />
+    <MESSAGE value="fixed forgot-password.html e reset-password.html" />
+    <MESSAGE value="fixed success.html.html e failure.html.html" />
+    <MESSAGE value="deletion confirmation token after usage" />
+    <MESSAGE value="correction ForgotPasswordController.validateResetToken to evaluate separately if null and if expired" />
+    <MESSAGE value="corretto colore di sfondo" />
+    <MESSAGE value="modificato RegistrationController.confirmUserAccount in modo da cancellare il token dopo l'utilizzo" />
+    <MESSAGE value="edit homepage.&#10;aggiunto easter egg" />
+    <MESSAGE value="edit homepage." />
+    <MESSAGE value="edit profile.html.&#10;aggiunti controlli di sicurezza a EditingPollController.stopTheCount e EditingPollController.deletePoll" />
+    <MESSAGE value="added about.html" />
+    <MESSAGE value="added update-password.html&#10;added password constraints and validation" />
+    <MESSAGE value="update profile.html" />
+    <MESSAGE value="added password-strenght-meter" />
+    <MESSAGE value="update success.html" />
+    <MESSAGE value="update dei metodi che inviano una mail correggendo il link in modo che punti alla live demo.&#10;inserita la dicitura [second round] nella creazione della domanda per il ballottaggio in PollCreationService.generateQuestionForSecondRound&#10;update README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="update dei metodi che inviano una mail correggendo il link in modo che punti alla live demo.&#10;inserita la dicitura [second round] nella creazione della domanda per il ballottaggio in PollCreationService.generateQuestionForSecondRound&#10;update README.md" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="4" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

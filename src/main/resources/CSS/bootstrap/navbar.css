@@ -1,0 +1,12 @@
+/* bootstrap */
+.btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none;
+}
+.navbar-toggler:focus,.navbar-toggler:active {
+    outline: none !important;
+    box-shadow: none;
+}
+.nav-link, .nav-link:hover{
+    color:white;
+}

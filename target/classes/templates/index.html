@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/../CSS/bootstrap/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/../CSS/bootstrap/index.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/../CSS/bootstrap/navbar.css}">
+    <title>Home</title>
+
+</head>
+<body>
+<!--NAV-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div>
+            <img id="logoProfile" src="/../img/question-diamond.svg"/>
+            <a id="btnProfileHome" role="button" class="btn btn-dark" th:href="@{/}">
+                L20
+            </a>
+            <a class="btn btn-dark" th:href="@{/about}" role="button">About</a>
+        </div>
+        <div sec:authorize="isAuthenticated()">
+            <a id="btnProfileUser" role="button" class="btn btn-dark" th:href="@{/user/{username}(username = ${#authentication.getPrincipal().getUsername()})}">
+                <span id="userNameProfile" th:text="${#authentication.getPrincipal().getUsername()}">PLACEHOLDER</span>
+                <img src="/../img/person-circle.svg"/>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!--pagina index-->
+
+<div id="cardIndex" class="card" style="width: 20rem;">
+    <img src="../img/IndexHome.gif" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h4 class="card-text"> Life is a matter of choices, would you leave it to chance? </h4><br>
+        <p style="font-family: sans-serif;"> Join our community and start asking questions - collect as many opinions as you can and make accurate decisions.<br>
+            It’s just a click away.
+        </p>
+        <div class="row">
+            <div class="col text-end">
+                <a class="btn btn-success" th:href="@{/login}" role="button">LogIn</a>
+            </div>
+            <div class="col"></div>
+            <div class="col text-start">
+                <a class="btn btn-success" th:href="@{/register}" role="button">SignUp</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="/../JS/popper.min.js"></script>
+<script src="/../JS/bootstrap.js"></script>
+<script src="/../JS/jquery.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/../CSS/bootstrap/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/../CSS/bootstrap/navbar.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/../CSS/bootstrap/pollcreation.css}">
+    <title>Edit poll</title>
+</head>
+<body class="bg-light">
+<!--NAV-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div>
+            <img id="logoProfile" src="/../img/question-diamond.svg"/>
+            <a id="btnProfileHome" role="button" class="btn btn-dark" th:href="@{/}">
+                L20
+            </a>
+            <a class="btn btn-dark" th:href="@{/about}" role="button">About</a>
+        </div>
+        <div sec:authorize="isAuthenticated()">
+            <a id="btnProfileUser" role="button" class="btn btn-dark" th:href="@{/user/{username}(username = ${#authentication.getPrincipal().getUsername()})}">
+                <span id="userNameProfile" th:text="${#authentication.getPrincipal().getUsername()}">PLACEHOLDER</span>
+                <img src="/../img/person-circle.svg"/>
+            </a>
+        </div>
+    </div>
+</nav>
+<div id="cardPollCreation" class="card w-75">
+    <div class="card-body">
+        <h1>EDIT POLL</h1>
+        <form th:action="@{/edit/poll/{id}(id = ${form.poll.pollId})}" method="post" th:object="${form}">
+            <!-- CAMPO DI TESTO PER LA DOMANDA -->
+            <div>
+                <input class="form-control" type="text" placeholder="Question" style="margin-top: 20px;" th:field="*{question.qText}" />
+                <p class="error" style="color: red; margin-top: 10px;" th:if="${#fields.hasErrors('question.qText')}" th:errors="*{question.qText}">VALIDATION ERROR</p>
+            </div>
+            <!-- CAMPO DI TESTO PER LE OPZIONI -->
+            <div id="choice-list">
+                <div th:each="choice, itemStat : *{choices}">
+                    <div class="row justify-content-center">
+                        <div class="col-10">
+                            <input class="form-control" type="text" placeholder="Option" style="margin-top: 20px;" th:field="*{choices[__${itemStat.index}__].cText}" />
+                            <p class="error" style="color: red; margin-top: 10px;" th:if="${#fields.hasErrors('choices[__${itemStat.index}__].cText')}"
+                               th:errors="*{choices[__${itemStat.index}__].cText}">VALIDATION ERROR</p>
+                        </div>
+                        <div class="col-2 text-center">
+                            <button class="btn text-danger" type="submit" name="removeOption" th:value="${itemStat.index}" style="margin-top: 20px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="error" style="color: red; margin-top: 10px;" th:if="${#fields.hasErrors('choices')}" th:errors="*{choices}">VALIDATION ERROR</p>
+                </div>
+                <!-- PULSANTI CHE AGGIUNGONO LE OPZIONI. IMORTANTE MANTENERE I CAMPI NAME -->
+                <button class="btn text-success" type="submit" name="addOption">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                    </svg>
+                </button>
+                <hr>
+            </div>
+
+            <!-- CHECKBOX PER POLL PUBBLICO O PRIVATO -->
+            <div>
+                <input class="form-check-input bg-dark" type="checkbox" id="classified" name="classified" value="true" th:field="*{poll.classified}" th:checked="*{poll.classified}" onclick="toggleEmailForm()">
+                <label class="form-label" for="double-round"> Private </label>
+            </div>
+            <div id="classified-email">
+                <!-- CAMPO DI TESTO PER LA RACCOLTA DELLE EMAIL -->
+                <div th:each="allowedUser, itemStat : *{allowedUsers}">
+                    <div class="row justify-content-center">
+                        <div class="col-10">
+                            <input class="form-control" type="text" placeholder="Email" style="margin-top: 20px;" th:field="*{allowedUsers[__${itemStat.index}__]}"></input>
+                            <p class="error" style="color: red; margin-top: 10px;" th:if="${#fields.hasErrors('allowedUsers[__${itemStat.index}__]')}" th:errors="*{allowedUsers[__${itemStat.index}__]}">VALIDATION ERROR</p>
+                        </div>
+                        <div class="col-2 text-center">
+                            <button class="btn text-danger" type="submit" name="removeUser" th:value="${itemStat.index}" style="margin-top: 20px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="error" style="color: red; margin-top: 10px;" th:if="${#fields.hasErrors('allowedUsers')}" th:errors="*{allowedUsers}">VALIDATION ERROR</p>
+                </div>
+                <!-- PULSANTI CHE AGGIUNGONO LE MAIL. IMORTANTE MANTENERE I CAMPI NAME -->
+                <button class="btn text-success" type="submit" name="addUser">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                    </svg>
+                </button>
+            </div>
+            <hr>
+            <!-- SELEZIONE SCADENZA POLL -->
+            <div>
+                <label class="form-label" for="expirationPoll">Expiration date:</label>
+                <input class="form-control" type="datetime-local" th:field="*{poll.expirationDate}" id="expirationPoll" name="expirationPoll" step="60" min="">
+                <p class="error" style="color: red; margin-top: 10px;" th:if="${#fields.hasErrors('poll.expirationDate')}" th:errors="*{poll.expirationDate}">VALIDATION ERROR</p>
+            </div>
+            <br>
+            <!-- CHECKBOX PER SINGOLO TURNO O DOPPIO TURNO -->
+            <div>
+                <input class="form-check-input bg-dark" type="checkbox" id="double-round" name="double-round" value="true" th:field="*{poll.doubleRound}" onclick="toggleDoubleRound()">
+                <label class="form-label" for="double-round"> Double round </label>
+            </div>
+            <!-- SELEZIONE SCADENZA PRIMO TURNO -->
+            <div id="doubleRound">
+                <label class="form-label" for="expirationQuestion">First round expiration date:</label>
+                <input class="form-control" type="datetime-local" th:field="*{question.expirationDate}" id="expirationQuestion" name="expirationQuestion" step="60" min="" max="">
+                <p class="error" style="color: red;  margin-top: 10px;" th:if="${#fields.hasErrors('question.expirationDate')}" th:errors="*{question.expirationDate}">VALIDATION ERROR</p>
+            </div>
+            <hr>
+            <!-- MANTENERE IL CAMPO VALUE -->
+            <input class="btn btn-success" type="submit" value="Submit"/>
+            <br>
+            <br>
+        </form>
+    </div>
+</div>
+<script src="/../JS/popper.min.js"></script>
+<script src="/../JS/bootstrap.js"></script>
+<script src="/../JS/jquery.js"></script>
+<script src="/../JS/pollcreation.js"></script>
+</body>
+</html>

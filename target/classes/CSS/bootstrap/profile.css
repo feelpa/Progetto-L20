@@ -1,0 +1,53 @@
+/*body*/
+body{
+    background-color: #DEDEDE;
+}
+/*your polls*/
+#pills-your-polls{
+    margin-left:20%;
+    margin-right:20%;
+}
+
+/*shared with you*/
+#pills-shared-with-you{
+    margin-left:20%;
+    margin-right:20%;
+}
+
+/*your polls*/
+#pills-community{
+    margin-left:20%;
+    margin-right:20%;
+}
+
+/* bootstrap */
+.btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none;
+}
+
+/*card*/
+.card{
+    margin-top: 2rem;
+}
+
+.custom-card{
+    margin-top: 10%;
+    margin-right: 25%;
+    margin-left: 25%;
+}
+
+.navbar-toggler:focus,.navbar-toggler:active {
+    outline: none !important;
+    box-shadow: none;
+}
+.nav-link, .nav-link:hover{
+    color:white;
+}
+.empty-list-placeholder {
+    margin-top: 50px;
+    font-size: 70px;
+    font-weight: lighter;
+    color: #ABABAB;
+}
+

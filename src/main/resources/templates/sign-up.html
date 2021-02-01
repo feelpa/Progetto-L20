@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/../CSS/bootstrap/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/../CSS/bootstrap/navbar.css}">
+    <link rel="stylesheet" href="/../CSS/bootstrap/sign-up.css">
+
+    <title>Sign up</title>
+
+</head>
+<body>
+<!--NAV-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div>
+            <img id="logoProfile" src="/../img/question-diamond.svg"/>
+            <a id="btnProfileHome" role="button" class="btn btn-dark" th:href="@{/}">
+                L20
+            </a>
+            <a class="btn btn-dark" th:href="@{/about}" role="button">About</a>
+        </div>
+        <div sec:authorize="isAuthenticated()">
+            <a id="btnProfileUser" role="button" class="btn btn-dark" th:href="@{/user/{username}(username = ${#authentication.getPrincipal().getUsername()})}">
+                <span id="userNameProfile" th:text="${#authentication.getPrincipal().getUsername()}">PLACEHOLDER</span>
+                <img src="/../img/person-circle.svg"/>
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="card position-absolute start-50 translate-middle-x align-content-md-around border-success" style="width: 18rem; margin-top:5%;" >
+    <div class="card-header text-center fs-5">Sign Up</div>
+    <div class="card-body">
+        <form method="POST" id="registerForm" th:action="@{/register}" th:object="${form}">
+            <!-Username->
+            <div class="mb-3">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" th:field="*{username}">
+                <p class="error" style="color: red;" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">VALIDATION ERROR</p>
+            </div>
+            <!-E-mail->
+            <div class="mb-3">
+                <label for="email">E-mail</label>
+                <input type="email" class="form-control" id="email" name="email" th:field="*{email}">
+                <p class="error" style="color: red;" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">VALIDATION ERROR</p>
+            </div>
+            <!-Password->
+            <div class="mb-3">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" th:field="*{password}">
+                <p class="error" style="color: red;" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">VALIDATION ERROR</p>
+            </div>
+            <!-confirm password->
+            <div class="mb-3">
+                <label for="confirm">Confirm password</label>
+                <input type="password" class="form-control" id="confirm" name="confirm" th:field="*{matchingPassword}">
+                <p class="error" style="color: red;" th:if="${#fields.hasErrors('global')}" th:errors="*{global}">VALIDATION ERROR</p>
+            </div>
+            <!-bottone di login->
+            <div class="d-grid gap-2">
+                <button class="btn btn-success">Sign up</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="/../JS/popper.min.js"></script>
+<script src="/../JS/bootstrap.js"></script>
+<script src="/../JS/jquery.js"></script>
+<script type="text/javascript" src="/../JS/pwstrength-bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    $(':password').pwstrength();
+</script>
+</body>
+</html>

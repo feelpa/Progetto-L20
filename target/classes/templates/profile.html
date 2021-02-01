@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" th:href="@{/../CSS/bootstrap/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/../CSS/bootstrap/profile.css}">
+
+    <title>L20</title>
+
+</head>
+<body>
+<!--NAV-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div>
+            <img id="arrowProfile" src="/../img/arrow-left.svg"/>
+            <img id="logoProfile" src="/../img/question-diamond.svg"/>
+            <a id="btnProfileHome" role="button" class="btn btn-dark" th:href="@{/}">
+                L20
+            </a>
+            <a class="btn btn-dark" th:href="@{/about}" role="button">About</a>
+        </div>
+        <div sec:authorize="isAuthenticated()">
+            <button id="btnProfileUser" type="button" class="btn btn-dark">
+                <span id="userNameProfile" th:text="${#authentication.getPrincipal().getUsername()}">PLACEHOLDER</span>
+                <img src="/../img/person-circle.svg"/>
+            </button>
+        </div>
+    </div>
+</nav>
+<!--NAV MENU-->
+<div sec:authorize="isAuthenticated()">
+    <nav id="navPollProfile" class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <img src="../img/list.svg"/>
+            </button>
+            <!--Navigation-->
+            <div class="collapse navbar-collapse collapse" id="navbarSupportedContent">
+                <ul class="nav nav-pills me-auto mb-2 mb-lg-0" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="pills-your-polls-tab" data-bs-toggle="pill" href="#pills-your-polls" role="tab" aria-controls="pills-your-polls" aria-selected="true">
+                            YOUR POLLS
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link " id="pills-shared-with-you-tab" data-bs-toggle="pill" href="#pills-shared-with-you" role="tab" aria-controls="pills-shared-with-you" aria-selected="false">
+                            SHARED WITH YOU
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link " id="pills-community-tab" data-bs-toggle="pill" href="#pills-community" role="tab" aria-controls="pills-community" aria-selected="false">
+                            SHARED WITH THE COMMUNITY
+                        </a>
+                    </li>
+                </ul>
+                <a class="btn btn-outline-success" th:href="@{/createpoll}" role="button">
+                    <img src="../img/plus.svg"/>
+                    NEW POLL
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>
+<!--Poll Profile-->
+<div id="pollProfile">
+    <div class="tab-content" id="pills-tabContent" >
+
+        <!--YOUR POLLS-->
+        <div class="tab-pane fade show active" id="pills-your-polls" role="tabpanel" aria-labelledby="pills-your-polls-tab">
+                <div th:if= "${#lists.isEmpty(pollsCreatedByUser)}">
+                    <center>
+                        <p class="empty-list-placeholder">
+                            There are no polls yet.
+                        </p>
+                    </center>
+                </div>
+
+                <!-- CARD -->
+                <div th:each="PollViewer, itemStat : *{pollsCreatedByUser}">
+                    <div class="card text-white bg-dark border-success">
+                        <div class="card-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <h4>
+                                            <span th:text="*{PollViewer.Question.QText}">
+                                                PLACEHOLDER
+                                            </span>
+                                        </h4>
+                                    </div>
+                                    <div class="col-lg-2 text-end" style="padding-bottom: 1rem;">
+                                        <div class="dropdown">
+                                            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Options
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <li><a class="dropdown-item" th:href="@{/edit/poll/{id}(id = *{PollViewer.poll.pollId})}">Edit</a></li>
+                                                <li th:if="*{PollViewer.poll.isDoubleRound}"><a class="dropdown-item requirePopUpConfirmation" th:href="@{/edit/poll/{id}/second-round (id = *{PollViewer.poll.pollId})}">Second Round</a></li>
+                                                <li>
+                                                    <a class="dropdown-item requirePopUpConfirmation" th:href="@{/edit/poll/{id}/stop-the-count(id = *{PollViewer.poll.pollId})}">Stop the count!
+                                                        <img src="/../img/theDonald.svg" width="30px" height="30px" style="padding-left: 3px;" />
+                                                    </a>
+                                                </li>
+                                                <li><a class="dropdown-item requirePopUpConfirmation" th:href="@{/edit/poll/{id}/delete (id = *{PollViewer.poll.pollId})}">Delete</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 text-end" style="padding-bottom: 1rem;">
+                                        <a class="btn btn-outline-success" th:href="@{/poll/{id}(id=${PollViewer.Poll.PollId})}" role="button">
+                                            <span th:text="${PollViewer.poll.isOpen} ? 'View' : 'Results'">PLACEHOLDER</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="bg-success">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col text-start">
+                                        <img src="../img/clock.svg" style="padding-right: 10px;"/>
+                                        <span th:text="*{#temporals.dayOfWeekNameShort(PollViewer.Question.ExpirationDate)}" />
+                                        <span th:text="*{#temporals.day(PollViewer.Question.ExpirationDate)}" />,
+                                        <span th:text="*{#temporals.monthNameShort(PollViewer.Question.ExpirationDate)}" />
+                                        <span th:text="*{#temporals.format(PollViewer.Question.ExpirationDate, 'HH:mm')}" />
+                                    </div>
+                                    <div class="col" th:if="${PollViewer.poll.isOpen} == false">
+                                        <center>
+                                           <img src="/../img/x-octagon.svg" width="30px" height="20px" style="padding-right: 10px;" />
+                                           <span>Closed</span>
+                                        </center>
+                                    </div>
+                                    <div class="col text-end">
+                                        <span th:text="*{PollViewer.poll.isDoubleRound} ? 'DoubleRound' : 'Single round'">PLACEHOLDER</span>
+                                        <img src="../img/tag.svg" style="padding-left: 10px;"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <!--SHARED WITH YOU-->
+        <div class="tab-pane fade" id="pills-shared-with-you" role="tabpanel" aria-labelledby="pills-shared-with-you-tab" style="background: #DEDEDE;">
+                <div th:if= "${#lists.isEmpty(pollsSharedWithUser)}">
+                    <center>
+                        <p class="empty-list-placeholder">
+                            There are no polls yet.
+                        </p>
+                    </center>
+                </div>
+
+
+            <!-- CARD -->
+            <div th:each="PollViewer, itemStat : *{pollsSharedWithUser}">
+                    <div class="card text-white bg-dark border-success">
+                        <div class="card-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <h4>
+                                            <span th:text="*{PollViewer.Question.QText}">
+                                                PLACEHOLDER
+                                            </span>
+                                        </h4>
+                                    </div>
+                                    <div class="col-lg-2 text-end" style="padding-bottom: 1rem;"></div>
+                                    <div class="col-lg-2 text-end" style="padding-bottom: 1rem;">
+                                        <a class="btn btn-outline-success" th:href="@{/poll/{id}(id=${PollViewer.Poll.PollId})}" role="button">
+                                            <span th:text="${PollViewer.poll.isOpen} ? 'View' : 'Results'">PLACEHOLDER</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="bg-success">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col text-start">
+                                        <img src="../img/clock.svg" style="padding-right: 10px;"/>
+                                        <span th:text="*{#temporals.dayOfWeekNameShort(PollViewer.Question.ExpirationDate)}" />
+                                        <span th:text="*{#temporals.day(PollViewer.Question.ExpirationDate)}" />,
+                                        <span th:text="*{#temporals.monthNameShort(PollViewer.Question.ExpirationDate)}" />
+                                        <span th:text="*{#temporals.format(PollViewer.Question.ExpirationDate, 'HH:mm')}" />
+                                    </div>
+                                    <div class="col" th:if="${PollViewer.poll.isOpen} == false">
+                                        <center>
+                                            <img src="/../img/x-octagon.svg" width="30px" height="20px" style="padding-right: 10px;" />
+                                            <span>Closed</span>
+                                        </center>
+                                    </div>
+                                    <div class="col text-end">
+                                        <span th:text="*{PollViewer.poll.isDoubleRound} ? 'DoubleRound' : 'Single round'">PLACEHOLDER</span>
+                                        <img src="../img/tag.svg" style="padding-left: 10px;"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <!--SHARED WITH THE COMMUNITY-->
+        <div class="tab-pane fade" id="pills-community" role="tabpanel" aria-labelledby="pills-community-tab">
+           <div th:if= "${#lists.isEmpty(publicPolls)}">
+               <center>
+                   <p class="empty-list-placeholder">
+                       There are no polls yet.
+                   </p>
+               </center>
+           </div>
+
+            <!-- CARD -->
+            <div th:each="PollViewer, itemStat : *{publicPolls}">
+                <div class="card text-white bg-dark border-success">
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <h4>
+                                        <span th:text="*{PollViewer.Question.QText}">
+                                            PLACEHOLDER
+                                        </span>
+                                    </h4>
+                                </div>
+                                <div class="col-lg-2 text-end" style="padding-bottom: 1rem;"></div>
+                                <div class="col-lg-2 text-end" style="padding-bottom: 1rem;">
+                                    <a class="btn btn-outline-success" th:href="@{/poll/{id}(id=${PollViewer.Poll.PollId})}" role="button">
+                                        <span th:text="${PollViewer.poll.isOpen} ? 'View' : 'Results'">PLACEHOLDER</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="bg-success">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col text-start">
+                                    <img src="../img/clock.svg" style="padding-right: 10px;"/>
+                                    <span th:text="*{#temporals.dayOfWeekNameShort(PollViewer.Question.ExpirationDate)}" />
+                                    <span th:text="*{#temporals.day(PollViewer.Question.ExpirationDate)}" />,
+                                    <span th:text="*{#temporals.monthNameShort(PollViewer.Question.ExpirationDate)}" />
+                                    <span th:text="*{#temporals.format(PollViewer.Question.ExpirationDate, 'HH:mm')}" />
+                                </div>
+                                <div class="col" th:if="${PollViewer.poll.isOpen} == false">
+                                    <center>
+                                        <img src="/../img/x-octagon.svg" width="30px" height="20px" style="padding-right: 10px;" />
+                                        <span>Closed</span>
+                                    </center>
+                                </div>
+                                <div class="col text-end">
+                                    <span th:text="*{PollViewer.poll.isDoubleRound} ? 'DoubleRound' : 'Single round'">PLACEHOLDER</span>
+                                    <img src="../img/tag.svg" style="padding-left: 10px;"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--User profile-->
+<div id="userProfile">
+
+
+
+    <div class="card text-white bg-dark border-success custom-card">
+        <div class="card-body">
+            <!-- TITOLO -->
+            <div class="container">
+                <div class="row">
+                    <center>
+                        <h5><span id="userName" th:text="${#authentication.getPrincipal().getUsername()}">PLACEHOLDER</span></h5>
+                    </center>
+                </div>
+            </div>
+            <!--  -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div class="form-control text-white bg-dark border-0 custom-form-control">
+                            <label for="user-username">Username:</label>
+                            <input class="form-control" th:field="*{user.username}" type="text" name="user-username" id="user-username" readonly/>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div class="form-control text-white bg-dark border-0 custom-form-control">
+                            <label for="user-email">Email:</label>
+                            <input class="form-control" th:field="*{user.email}" type="text" name="user-email" id="user-email" readonly/>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+            <hr class="bg-success">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3 text-start">
+                        <form th:action="@{/logout}" method="post">
+                            <input class="btn btn-success bg-success" type="submit" value="Logout"/>
+                        </form>
+                    </div>
+                    <div class="col-md-3 text-end">
+                        <a class="btn btn-success bg-success" role="button" th:href="@{/user/{username}/update-password(username = ${#authentication.getPrincipal().getUsername()})}">
+                            Update password
+                        </a>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="/../JS/popper.min.js"></script>
+<script src="/../JS/bootstrap.js"></script>
+<script src="/../JS/jquery.js"></script>
+<script src="/../JS/profile.js"></script>
+
+</body>
+</html>

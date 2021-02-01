@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: it.unipv.ingsw.l20PollingSystem.L20PollingSystemApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.648 s - in it.unipv.ingsw.l20PollingSystem.L20PollingSystemApplicationTests

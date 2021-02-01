@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/../CSS/bootstrap/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/../CSS/bootstrap/navbar.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/../CSS/bootstrap/common.css}">
+
+    <style>
+        body{
+            background: #DEDEDE;
+        }
+        a{
+            color: inherit;
+            text-decoration:none;
+        }
+        a:hover{
+            color: #198754;
+            text-decoration:none;
+        }
+    </style>
+
+    <title>About</title>
+</head>
+<body>
+<!--NAV-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div>
+            <img id="logoProfile" src="../img/question-diamond.svg"/>
+            <a id="btnProfileHome" role="button" class="btn btn-dark" th:href="@{/}">
+                L20
+            </a>
+            <a class="btn btn-dark" th:href="@{/about}" role="button">About</a>
+        </div>
+        <div sec:authorize="isAuthenticated()">
+            <a id="btnProfileUser" role="button" class="btn btn-dark" th:href="@{/user/{username}(username = ${#authentication.getPrincipal().getUsername()})}">
+                <span id="userNameProfile" th:text="${#authentication.getPrincipal().getUsername()}">PLACEHOLDER</span>
+                <img src="../img/person-circle.svg"/>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="card text-white bg-dark border-success">
+    <div class="card-body">
+        <div class="container">
+            <div class="row">
+                <center>
+                    <h1>About</h1>
+                </center>
+            </div>
+            <!-- <hr class="bg-success"> -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <p>The L20 Polling System is a platform developed for the software engineering course at Università di Pavia by, in alphabetical order:</p>
+                        <ul>
+                            <li><a href="https://github.com/feelpa">Francesco Filpa</a></li>
+                            <li><a href="https://github.com/Framaf">Francesco Maffia</a></li>
+                            <li><a href="https://github.com/kasiannitse">Kasian Nitse</a></li>
+                            <li><a href="https://github.com/AndreaPortaluppi">Andrea Portaluppi</a></li>
+                            <li><a href="https://github.com/EmanueleSimonettiRosario">Emanuele Simonetti Rosario</a></li>
+                        </ul>
+                        <p>This platform allows you to create a personal account, verified by e-mail, and create polls you can share with the community,
+                            or with a selected number of other registered accounts – colleagues, friends or family.</p>
+                        <hr class="bg-success">
+                        <center>
+                            <a href="https://github.com/feelpa/l20PollingSystem">
+                                <img src="/../img/github.svg" width="30px" height="30px">
+                            </a>
+                        </center>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="/../JS/popper.min.js"></script>
+    <script src="/../JS/bootstrap.js"></script>
+    <script src="/../JS/jquery.js"></script>
+</body>
+</html>

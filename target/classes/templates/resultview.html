@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/../CSS/bootstrap/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/../CSS/bootstrap/navbar.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/../CSS/bootstrap/common.css}">
+    <title>Results</title>
+</head>
+
+<body style="background: #DEDEDE;">
+<!--NAV-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div>
+            <img id="logoProfile" src="/../img/question-diamond.svg"/>
+            <a id="btnProfileHome" role="button" class="btn btn-dark" th:href="@{/}">
+                L20
+            </a>
+            <a class="btn btn-dark" th:href="@{/about}" role="button">About</a>
+        </div>
+        <div sec:authorize="isAuthenticated()">
+            <a id="btnProfileUser" role="button" class="btn btn-dark" th:href="@{/user/{username}(username = ${#authentication.getPrincipal().getUsername()})}">
+                <span id="userNameProfile" th:text="${#authentication.getPrincipal().getUsername()}">PLACEHOLDER</span>
+                <img src="/../img/person-circle.svg"/>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="card text-white bg-dark border-success">
+    <div class="card-body">
+        <!-- VISUALIZZAZIONE DOMANDA -->
+        <div class="container">
+            <div class="row">
+                <center>
+                    <h5 class="text-white"><span th:text="*{question.QText}">PLACEHOLDER</span></h5>
+                </center>
+            </div>
+        </div>
+        <hr class="bg-success">
+        <!-- VISUALIZZAZIONE RISPOSTE -->
+        <div class="container">
+            <div class="row justify-content-center align-middle" th:each="rs : *{resultSet}">
+                <div class="col-md-2 text-end">
+                        <span th:if="*{userAnswer} != null and *{userAnswer.choiceId} == *{rs.id}">
+                            <img src="/../img/check-circle.svg" />
+                        </span>
+                </div>
+                <div class="col-md-2">
+                    <p><span th:text="*{rs.CText}">PLACEHOLDER</span></p>
+                </div>
+                <div class="col-md-7">
+                    <div class="progress" style="height: 4px; margin-top: 11px">
+                        <div class="progress-bar bg-success" role="progressbar" th:style="'width:'+ *{rs.Percentage}+';'"
+                             th:attr="aria-valuenow=*{rs.Percentage}" aria-valuemin="0" aria-valuemax="100">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 text-end">
+                    <center>
+                        <p th:text="*{rs.Count}">PLACEHOLDER</p>
+                    </center>
+                </div>
+            </div>
+        </div>
+        <hr class="bg-success">
+        <!-- VISUALIZZAZIONE DETTAGLI DOMANDA -->
+        <div class="container">
+            <div class="row">
+                <div class="col text-start">
+                    <!-- MOSTRA LA DATA NEL FORMATO WED 27, JAN 09:00 -->
+                    <a id="date" role="button" class="btn btn-dark" href="#">
+                        <img src="../img/clock.svg" style="padding-right: 10px;"/>
+                        <span th:text="*{#temporals.dayOfWeekNameShort(question.ExpirationDate)}" />
+                        <span th:text="*{#temporals.day(question.ExpirationDate)}" />,
+                        <span th:text="*{#temporals.monthNameShort(question.ExpirationDate)}" />
+                        <span th:text="*{#temporals.format(question.ExpirationDate, 'HH:mm')}" />
+                    </a>
+                </div>
+                <div class="col text-end">
+                    <a id="backButton" role="button" class="btn btn-dark" th:href="@{/user/{username}(username = ${#authentication.getPrincipal().getUsername()})}">
+                        <img src="/../img/arrow-left2.svg" style="padding-right: 10px;"/>
+                        <span>Back</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/../JS/popper.min.js"></script>
+<script src="/../JS/bootstrap.js"></script>
+<script src="/../JS/jquery.js"></script>
+
+</body>
+</html>

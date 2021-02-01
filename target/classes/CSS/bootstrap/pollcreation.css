@@ -1,0 +1,27 @@
+.btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none;
+}
+.navbar-toggler:focus,.navbar-toggler:active {
+    outline: none !important;
+    box-shadow: none;
+}
+.nav-link, .nav-link:hover{
+    color:white;
+}
+
+.form-check-input:focus,.form-check-input:active {
+    outline: none !important;
+    box-shadow: none;
+    border-color:black;
+}
+
+.form-control:focus,.form-control:active {
+    outline: none !important;
+    box-shadow: none;
+    border-color:black;
+}
+#cardPollCreation{
+    padding:15px;
+    margin: 20px auto;
+}
