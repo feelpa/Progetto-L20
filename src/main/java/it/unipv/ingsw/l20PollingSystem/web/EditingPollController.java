@@ -165,18 +165,21 @@ public class EditingPollController {
             return "failure";
         } else if(poll.isDoubleRound()) {
             Question question = questionRepo.findByPollIdAndIsOpen(pollId, true);
-            PollCreationForm secondRoundForm = pollCreationService.setUpSecondRound(poll, question);
-
-            pollCreationService.updatePoll(secondRoundForm);
-
-            return "redirect:/poll/" + pollId;
+            if(!(question.getQText().contains("[SECOND ROUND]"))) {
+                PollCreationForm secondRoundForm = pollCreationService.setUpSecondRound(poll, question);
+                pollCreationService.updatePoll(secondRoundForm);
+                return "redirect:/poll/" + pollId;
+            } else {
+                model.addAttribute("message", "Operation aborted.\nAlready second round.");
+                return "failure";
+            }
         } else {
             model.addAttribute("message", "Operation aborted. This is not a double round poll.\nNice try!");
             return "failure";
         }
     }
 
-    @GetMapping(value = "stop-the-count")
+    @GetMapping(value = "/stop-the-count")
     public String stopTheCount(@PathVariable("id") int pollId, Model model){
         Poll poll = pollRepo.findByPollId(pollId);
         if(!poll.isOpen()){
@@ -190,7 +193,7 @@ public class EditingPollController {
         }
     }
 
-    @GetMapping(value = "delete")
+    @GetMapping(value = "/delete")
     public String deletePoll(@PathVariable("id") int pollId, Model model){
         Optional<Poll> optionalPollToDelete = pollRepo.findById(pollId);
         if(optionalPollToDelete.isPresent()){
