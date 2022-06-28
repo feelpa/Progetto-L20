@@ -1,5 +1,4 @@
 # L20 Polling System
-Una live demo dell'applicativo è disponibile all'indirizzo: https://l20.fresqo.net \
 Per il corretto funzionamento è necessario utilizzare un browser che supporti [`<input type="datetime-local">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/datetime-local), quindi uno tra Chrome, Edge o Opera.
 ## Istruzioni per l'utilizzo
 Il progetto è stato realizzato con IntelliJ Idea, il framework Spring e il template engine Thymeleaf.\
